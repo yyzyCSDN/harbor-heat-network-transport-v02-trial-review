@@ -1,0 +1,238 @@
+{
+  "schema_version": 1,
+  "prerequisites": [],
+  "items": [
+    {
+      "id": "layered_forward_interfaces",
+      "weight": 3,
+      "rationale": "正向初始分层和入口交接是塞流状态的基础，保留明确正分。",
+      "nodeids": [
+        "test_outputs.py::test_layered_forward_interfaces"
+      ]
+    },
+    {
+      "id": "layered_reverse_interfaces",
+      "weight": 3,
+      "rationale": "负向初始层和固定端点验证方向对称性，重要性与正向相同。",
+      "nodeids": [
+        "test_outputs.py::test_layered_reverse_interfaces"
+      ]
+    },
+    {
+      "id": "stagnant_spatial_traces",
+      "weight": 2,
+      "rationale": "停流单侧迹和null是局部退化边界，物理必需但不含跨节点历史。",
+      "nodeids": [
+        "test_outputs.py::test_stagnant_spatial_traces"
+      ]
+    },
+    {
+      "id": "acceleration_residence_history",
+      "weight": 3,
+      "rationale": "累计位移而非当前流量时延是变流输运的核心基础。",
+      "nodeids": [
+        "test_outputs.py::test_acceleration_residence_history"
+      ]
+    },
+    {
+      "id": "deceleration_residence_history",
+      "weight": 3,
+      "rationale": "减速跨控制区间仍须保存真实年龄，与加速同等重要。",
+      "nodeids": [
+        "test_outputs.py::test_deceleration_residence_history"
+      ]
+    },
+    {
+      "id": "stall_then_restart",
+      "weight": 4,
+      "rationale": "同时验证无位移时的散热和重启后的历史前沿，直接影响供水温度。",
+      "nodeids": [
+        "test_outputs.py::test_stall_then_restart"
+      ]
+    },
+    {
+      "id": "same_end_return",
+      "weight": 4,
+      "rationale": "反转同端返回要求保留真实水体历史，固定单向延迟无法等价实现。",
+      "nodeids": [
+        "test_outputs.py::test_same_end_return"
+      ]
+    },
+    {
+      "id": "multiple_reversals",
+      "weight": 5,
+      "rationale": "多次反转后未排出水层仍影响结果，是持续状态输运的综合检验。",
+      "nodeids": [
+        "test_outputs.py::test_multiple_reversals"
+      ]
+    },
+    {
+      "id": "stop_reverse_restart",
+      "weight": 4,
+      "rationale": "停流、反向重启和边界分离相互作用，不能靠独立静态规则拼接。",
+      "nodeids": [
+        "test_outputs.py::test_stop_reverse_restart"
+      ]
+    },
+    {
+      "id": "front_and_reversal_coincide",
+      "weight": 4,
+      "rationale": "前沿与控制同刻的方向选择决定物理解，属于关键事件边界。",
+      "nodeids": [
+        "test_outputs.py::test_front_and_reversal_coincide"
+      ]
+    },
+    {
+      "id": "source_sink_at_stopped_nodes",
+      "weight": 2,
+      "rationale": "节点有热源不代表停流管被加热，验证局部边界隔离而非复杂传播。",
+      "nodeids": [
+        "test_outputs.py::test_source_sink_at_stopped_nodes"
+      ]
+    },
+    {
+      "id": "unequal_incoming_mix",
+      "weight": 4,
+      "rationale": "不同流量进入节点的能量混合及后续输运是网络模型的核心。",
+      "nodeids": [
+        "test_outputs.py::test_unequal_incoming_mix"
+      ]
+    },
+    {
+      "id": "external_source_recirculation",
+      "weight": 4,
+      "rationale": "回流与外源混合耦合历史状态和新输入，影响多轮传播。",
+      "nodeids": [
+        "test_outputs.py::test_external_source_recirculation"
+      ]
+    },
+    {
+      "id": "split_merge_chain",
+      "weight": 3,
+      "rationale": "分流再汇流检验拓扑一般性，但无闭环反馈，权重低于耦合环路。",
+      "nodeids": [
+        "test_outputs.py::test_split_merge_chain"
+      ]
+    },
+    {
+      "id": "parallel_delays_and_losses",
+      "weight": 2,
+      "rationale": "并行通道不能合并为一个平均时延，作为有界拓扑边界单独给分。",
+      "nodeids": [
+        "test_outputs.py::test_parallel_delays_and_losses"
+      ]
+    },
+    {
+      "id": "closed_ring_initial_memory",
+      "weight": 4,
+      "rationale": "无源闭环必须携带初态记忆，防止误解为瞬时稳态混合。",
+      "nodeids": [
+        "test_outputs.py::test_closed_ring_initial_memory"
+      ]
+    },
+    {
+      "id": "source_ring_delayed_recurrence",
+      "weight": 4,
+      "rationale": "有源环路形成带延迟的混合递推，是实际循环供热的关键行为。",
+      "nodeids": [
+        "test_outputs.py::test_source_ring_delayed_recurrence"
+      ]
+    },
+    {
+      "id": "two_incoming_cycles",
+      "weight": 5,
+      "rationale": "多入流环路组合混合与不同输运历史，直接检验全网络因果性。",
+      "nodeids": [
+        "test_outputs.py::test_two_incoming_cycles"
+      ]
+    },
+    {
+      "id": "whole_ring_reverse_stall",
+      "weight": 5,
+      "rationale": "环路反转及停流同时重定向混合关系和历史传播，耦合程度高。",
+      "nodeids": [
+        "test_outputs.py::test_whole_ring_reverse_stall"
+      ]
+    },
+    {
+      "id": "disconnected_and_isolated",
+      "weight": 2,
+      "rationale": "不相连组件与孤立节点不得互相污染，是局部域边界而非额外算法难点。",
+      "nodeids": [
+        "test_outputs.py::test_disconnected_and_isolated"
+      ]
+    },
+    {
+      "id": "heterogeneous_loss_chain",
+      "weight": 4,
+      "rationale": "真实路径各段损耗共同决定温度和热量，不可用统一衰减率代替。",
+      "nodeids": [
+        "test_outputs.py::test_heterogeneous_loss_chain"
+      ]
+    },
+    {
+      "id": "zero_and_tiny_loss",
+      "weight": 3,
+      "rationale": "零和极小损耗是合法物理极限，稳定积分不可因退化而失效。",
+      "nodeids": [
+        "test_outputs.py::test_zero_and_tiny_loss"
+      ]
+    },
+    {
+      "id": "negative_relative_heat",
+      "weight": 3,
+      "rationale": "相对环境的负热量及回温符号影响物理含义，不能截断。",
+      "nodeids": [
+        "test_outputs.py::test_negative_relative_heat"
+      ]
+    },
+    {
+      "id": "nonuniform_remaining_heat",
+      "weight": 4,
+      "rationale": "部分排出后的分布积分是核心输出，单一均温不能代表剩余状态。",
+      "nodeids": [
+        "test_outputs.py::test_nonuniform_remaining_heat"
+      ]
+    },
+    {
+      "id": "query_order_and_repetition",
+      "weight": 2,
+      "rationale": "重复乱序应只观察状态，属于重要接口确定性而不增加物理机制。",
+      "nodeids": [
+        "test_outputs.py::test_query_order_and_repetition"
+      ]
+    },
+    {
+      "id": "simultaneous_port_role_changes",
+      "weight": 5,
+      "rationale": "多管同刻改变流向/停流角色，节点需重建真实入流集合。",
+      "nodeids": [
+        "test_outputs.py::test_simultaneous_port_role_changes"
+      ]
+    },
+    {
+      "id": "initial_and_final_control",
+      "weight": 2,
+      "rationale": "初末时刻事件定义必须正确，局部边界给分但不作为全局门槛。",
+      "nodeids": [
+        "test_outputs.py::test_initial_and_final_control"
+      ]
+    },
+    {
+      "id": "maximum_shape_with_components",
+      "weight": 2,
+      "rationale": "最大形状验证范围承诺；不能仅因尺寸或断言多就提高重要性。",
+      "nodeids": [
+        "test_outputs.py::test_maximum_shape_with_components"
+      ]
+    },
+    {
+      "id": "fast_branching_reversal_combo",
+      "weight": 5,
+      "rationale": "短穿越、多入流、异损耗、密集反转共同检验模型组合完整性。",
+      "nodeids": [
+        "test_outputs.py::test_fast_branching_reversal_combo"
+      ]
+    }
+  ]
+}

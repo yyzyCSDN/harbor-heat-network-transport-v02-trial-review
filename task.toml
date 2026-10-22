@@ -1,0 +1,35 @@
+schema_version = "1.3"
+
+[task]
+name = "local/heat-network-transport"
+version = "0.2.0"
+description = "Repair transient plug-flow heat transport, reversal and mixing in a district heating network."
+keywords = ["energy", "district-heating", "transport", "thermal", "simulation", "flow-reversal"]
+
+[agent]
+timeout_sec = 3600
+user = "solver"
+
+[environment]
+build_timeout_sec = 900
+cpus = 1
+memory_mb = 2048
+storage_mb = 4096
+gpus = 0
+allow_internet = true
+network_mode = "public"
+
+[verifier]
+timeout_sec = 300
+user = "root"
+environment_mode = "separate"
+
+[metadata]
+difficulty = "medium"
+category = "energy"
+expert_time_estimate = "2-4 hours (author estimate for implementation and numerical validation; not a measured result)"
+
+[[artifacts]]
+source = "/app"
+destination = "candidate"
+exclude = ["__pycache__", "*.pyc", ".venv", ".git"]
